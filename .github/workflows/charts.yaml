@@ -1,4 +1,4 @@
-name: Sync Chart
+name: Build Chart
 
 on:
   schedule:
