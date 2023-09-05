@@ -50,5 +50,5 @@ jobs:
     - name: Build and Push chart
       shell: bash
       run: |
-        cd ${GITHUB_WORKSPACE}/charts/kali2/ && rm *.tgz -f && helm package ./ && ls *.tgz && helm cm-push observableserver-${TAG}.tgz sync
-        cd ${GITHUB_WORKSPACE}/charts/nessus/ && rm *.tgz -f && helm package ./ && ls *.tgz && helm cm-push observableserver-${TAG}.tgz sync
+        cd ${GITHUB_WORKSPACE} && helm cm-push charts/kali2/ sync
+        cd ${GITHUB_WORKSPACE} && helm cm-push charts/nessus/ sync
