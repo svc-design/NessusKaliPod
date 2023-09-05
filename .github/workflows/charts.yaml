@@ -39,8 +39,6 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
         helm plugin install https://github.com/chartmuseum/helm-push.git
-        helm repo add sync --username=admin --password='$REPO_PASSWORD' https://charts.onwalk.net
-        helm repo up
 
     - name: Clone Source
       shell: bash
@@ -50,5 +48,9 @@ jobs:
     - name: Build and Push chart
       shell: bash
       run: |
+        export HELM_REPO_USERNAME="admin"
+        export HELM_REPO_PASSWORD='$REPO_PASSWORD'
+        helm repo add sync https://charts.onwalk.net
+        helm repo up
         cd ${GITHUB_WORKSPACE} && helm cm-push charts/kali2/ sync
         cd ${GITHUB_WORKSPACE} && helm cm-push charts/nessus/ sync
