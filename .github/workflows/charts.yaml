@@ -16,8 +16,6 @@ on:
 env:
   REPO_URL: https://github.com/svc-design/NessusKaliPod.git 
   REPO_BRANCH: main
-  HELM_REPO_USERNAME: "admin"
-  HELM_REPO_PASSWORD: ${{ secrets.HELM_REPO_PASSWORD }}
   DEBIAN_FRONTEND: noninteractive
   TZ: Asia/Shanghai
 
@@ -49,5 +47,7 @@ jobs:
       run: |
         helm repo add sync https://charts.onwalk.net
         helm repo up
+        export HELM_REPO_USERNAME="admin"
+        export HELM_REPO_PASSWORD="${{ secrets.HELM_REPO_PASSWORD }}"
         cd ${GITHUB_WORKSPACE} && helm cm-push charts/kali2/ sync
         cd ${GITHUB_WORKSPACE} && helm cm-push charts/nessus/ sync
