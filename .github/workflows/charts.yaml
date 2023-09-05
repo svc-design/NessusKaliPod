@@ -39,7 +39,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
         helm plugin install https://github.com/chartmuseum/helm-push.git
-        echo "$REPO_PASSWORD" | helm repo add sync --username=admin --password-stdin https://charts.onwalk.net
+        helm repo add sync --username=admin --password='$REPO_PASSWORD' https://charts.onwalk.net
         helm repo up
 
     - name: Clone Source
