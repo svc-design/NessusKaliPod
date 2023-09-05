@@ -49,5 +49,6 @@ jobs:
         helm repo up
         export HELM_REPO_USERNAME="admin"
         export HELM_REPO_PASSWORD="${{ secrets.HELM_REPO_PASSWORD }}"
+        export HELM_REPO_ACCESS_TOKEN="${{ secrets.HELM_REPO_PASSWORD }}"
         cd ${GITHUB_WORKSPACE} && helm cm-push charts/kali2/ sync
         cd ${GITHUB_WORKSPACE} && helm cm-push charts/nessus/ sync
