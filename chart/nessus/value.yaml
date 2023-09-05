@@ -1,0 +1,20 @@
+service:
+  type: LoadBalancer #路由到container pod tcp
+  port: 443
+
+image:
+  tag: latest
+  pullPolicy: IfNotPresent
+
+resources: {}
+  limits:
+    cpu: 1000m #调整
+    memory: 2048Mi   #调整  
+  requests:
+    cpu: 100m 
+    memory: 128Mi
+
+nessus:
+  activation_code: "CKS9-S6FR-EQFW-BRSP-39Y6"
+  username: "admin"
+  password: "eccom123"
