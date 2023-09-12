@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "tenableofficial/nessus:{{ .Values.image.tag | default .Chart.AppVersion }}" #->.Values.image.
+          image: "tenable/nessus:{{ .Values.image.tag | default .Chart.AppVersion }}" #->.Values.image.
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 8834
